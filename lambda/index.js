@@ -5,7 +5,7 @@ const Alexa = require('alexa-sdk')
 /*** HELPER FUNCTIONS ***/
 
 // Interpret GET requests w/o import
-const getContent = function(url) {
+const getContent = (url) => {
   return new Promise((resolve, reject) => {
     const lib = url.startsWith('https') ? require('https') : require('http')
     const request = lib.get(url, (response) => {
@@ -20,10 +20,16 @@ const getContent = function(url) {
   })
 }
 
+const alternatePhoneme = `<phoneme alphabet="ipa" ph="ɔ: l t ɜ: n ə t  ">alternate</phoneme>`
+
+const addPhonemes = (res) => {
+  return res.replace(/[Aa]lternate/g, alternatePhoneme)
+}
+
 /*** END HELPER FUNCTIONS ***/
 
 const getAspUrl = `https://api.cityofnewyork.us/311/v1/municipalservices?app_id=${process.env.ASP_311_APP_ID}&app_key=${process.env.ASP_311_APP_KEY}`
-const HELP_MESSAGE = "I'll tell you if Alternate Side Parking is in effect in New York City"
+const HELP_MESSAGE = `I will tell you if ${alternatePhoneme} Side Parking is in effect in New York City` // TODO
 const STOP_MESSAGE = 'Goodbye' // TODO
 
 const handlers = {
@@ -45,7 +51,7 @@ const handlers = {
     })
     .then(res => {
         console.log(res)
-      this.emit(':tell', res.message) // TODO: Change pronunciation of 'alternate'
+      this.emit(':tell', addPhonemes(res.message))
     })
   },
   'AMAZON.HelpIntent': function() {
