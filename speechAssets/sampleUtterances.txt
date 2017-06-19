@@ -1,0 +1,16 @@
+AlternateSideParking is there alternate side parking today
+AlternateSideParking is alternate side parking in effect
+AlternateSideParking is alternate side in effect
+AlternateSideParking alternate side
+AlternateSideParking status
+AlternateSideParking info
+
+AlternateSideTomorrow is there alternate side parking tomorrow
+AlternateSideTomorrow is there alternate side tomorrow
+AlternateSideTomorrow is alternate side in effect tomorrow
+AlternateSideTomorrow alternate side tomorrow
+AlternateSideTomorrow status tomorrow
+AlternateSideTomorrow info tomorrow
+AlternateSideTomorrow tomorrow alternate side
+AlternateSideTomorrow tomorrow status
+AlternateSideTomorrow tomorrow info
