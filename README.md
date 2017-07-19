@@ -8,8 +8,14 @@ Parking in NYC is not a particularly fun experience. One of the key reasons for 
 ### Feature List
 - Get up-to-date information if ASP is in effect **DONE**
   - Get Alexa to pronounce 'alternate' correctly **DONE**
-- Check if ASP rules are in effect the next day **DONE**
-- Cache 311 API responses to increase responsiveness of the skill and support scaling
+  - Contextual response ( >4PM ? Today ASP : Tomorrow ASP)
+- Query check if ASP rules are in effect for a given day
+  - Today **DONE**
+  - Tomorrow **DONE**
+  - Arbitrary day
+- Cache ASP data to increase responsiveness of the skill and support scaling*
+
+*This is also to alleviate a problem where the 311 API times out (either through an API timeout, or the response time exceeds the lifecycle of the Lambda)
 
 **Stretch Goals**
 - Know where one is parked
