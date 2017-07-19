@@ -1,11 +1,11 @@
 # Alexa-parking
 Alexa skill to keep track of NYC Alternate Side Parking
 
-##Thesis Statement_
+### Thesis Statement
 
 Parking in NYC is not a particularly fun experience. One of the key reasons for this is Alternate Side Parking (ASP) rules. Something that I do every day is check to see if ASP is in effect, so I know A) If I need to move my car and B) if I can park in a 'today' spot without fear of getting a ticket. This Alexa app was concieved to make this process easier.
 
-##Feature List_
+### Feature List
 - Get up-to-date information if ASP is in effect **DONE**
   - Get Alexa to pronounce 'alternate' correctly **DONE**
 - Check if ASP rules are in effect the next day **DONE**
