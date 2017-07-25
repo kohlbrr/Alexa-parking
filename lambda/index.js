@@ -39,19 +39,19 @@ const getAspUrl = `https://api.cityofnewyork.us/311/v1/municipalservices?app_id=
 
 // Gets ASP info for a specific date
 const getAspInfo = (date) => {
-    return getContent(getAspUrl + `&startDate=${date}`)
-    .then(res => JSON.parse(res))
-    .then(res => {
-      return ({ // TODO: Clean this up
-        today: res.items[0].today_id,
-        status: res.items[0].items[0].status,
-        message: res.items[0].items[0].details
-      })
+  return getContent(getAspUrl + `&startDate=${date}`)
+  .then(res => JSON.parse(res))
+  .then(res => {
+    return ({ // TODO: Clean this up
+      today: res.items[0].today_id,
+      status: res.items[0].items[0].status,
+      message: res.items[0].items[0].details
     })
-    .then(res => {
-      return addPhonemes(res.message)
-    })
-    .catch(console.error)
+  })
+  .then(res => {
+    return addPhonemes(res.message)
+  })
+  .catch(console.error)
 }
 
 // Phoneme alphabet consts to replace in responses
@@ -64,20 +64,26 @@ const addPhonemes = (res) => {
 
 /*** END HELPER FUNCTIONS ***/
 
-const HELP_MESSAGE = `I will tell you if ${alternatePhoneme} Side Parking is in effect in New York City` // TODO
+const HELP_MESSAGE = `I will tell you if ${alternatePhoneme} Side Parking is in effect in New York City`
 const STOP_MESSAGE = 'Goodbye' // TODO
+
+const d = new Date() // Used to determine if today or tomorrow ASP info is grabed on a bare launch
 
 const handlers = {
   'LaunchRequest': function() {
-    this.emit('AlternateSideParking')
+    d.getHours() < 16 ?
+        this.emit('AlternateSideToday') :
+        this.emit('AlternateSideTomorrow')
   },
-  'AlternateSideParking': function() {
+  'AlternateSideToday': function() {
     getAspInfo(get311Date(0))
     .then(message => { this.emit(':tell', message) })
+    .catch(console.error)
   },
   'AlternateSideTomorrow': function() {
     getAspInfo(get311Date(1))
     .then(message => { this.emit(':tell', ('For tomorrow, ' + message)) })
+    .catch(console.error)
   },
   'AMAZON.HelpIntent': function() {
     const speechOutput = HELP_MESSAGE
