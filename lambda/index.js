@@ -71,6 +71,9 @@ const d = new Date() // Used to determine if today or tomorrow ASP info is grabe
 
 const handlers = {
   'LaunchRequest': function() {
+    this.emit('AlternateSideTomorrow')
+  },
+  'AlternateSide': function() {
     (d.getHours()+18) % 23 < 16 ? // EST conversion (Issue 1)
         this.emit('AlternateSideToday') :
         this.emit('AlternateSideTomorrow')
