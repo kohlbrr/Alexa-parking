@@ -8,7 +8,7 @@ Parking in NYC is not a particularly fun experience. One of the key reasons for 
 ### Feature List
 - Get up-to-date information if ASP is in effect **DONE**
   - Get Alexa to pronounce 'alternate' correctly **DONE**
-  - Contextual response ( >4PM ? Today ASP : Tomorrow ASP) **DONE**
+  - Contextual response ( >4PM ? Today ASP : Tomorrow ASP) **DONE-ish**
 - Query check if ASP rules are in effect for a given day
   - Today **DONE**
   - Tomorrow **DONE**
